@@ -8,6 +8,7 @@ const User = require('../models/User')
 
 const router = express.Router();
 
+//Realiza a autenticação do usuário via JWT, gerando um Token a cada Login
 function generateToken(params = {}) {
     return jwt.sign(params, authConfig.secret, {
         expiresIn: 86400,
