@@ -1,16 +1,13 @@
-const express = require ('express');
+const mongoose = require('mongoose');
+//mongoose vai conectar o node com o MongoDB
 
-const bodyParser = require('body-parser');
+//conecta com o banco de dados
+mongoose.connect("mongodb://localhost/noderest", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
+});
+//indica a classe de Promise que o mongoose vai utilizar
+mongoose.Promise = global.Promise;
 
-const app = express();
-
-//Entende requisições em json que sao enviadas a api
-app.use(bodyParser.json());
-
-//Entende e decodifica parametros url passados a api
-app.use(bodyParser.urlencoded({ extended: false}));
-
-
-
-
-app.listen(3000);
+module.exports = mongoose;
